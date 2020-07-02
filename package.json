@@ -1,7 +1,7 @@
 {
   "name": "@kwsites/promise-result",
   "description": "Utility to transform any promise into its fulfilled value whether it resolved or rejected.",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": false,
   "author": "Steve King <steve@mydev.co>",
   "contributors": [
