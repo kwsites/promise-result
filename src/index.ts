@@ -85,6 +85,20 @@ export function promiseError<E extends Error = Error>(generator: Promise<any>): 
 }
 
 /**
+ * Creates a `PromiseResult` representing an already resolved promise
+ */
+export function promiseResultResolved<T> (resolved: T) {
+   return promiseResult(Promise.resolve(resolved));
+}
+
+/**
+ * Creates a `PromiseResult` representing an already rejected promise
+ */
+export function promiseResultRejected<E extends Error> (rejected: E) {
+   return promiseResult(Promise.reject(rejected));
+}
+
+/**
  * Utility guard method used to assert the type of result was a success
  */
 export function isPromiseSuccess<R = any> (test: any): test is PromiseSuccessResult<R> {
