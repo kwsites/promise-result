@@ -1,4 +1,11 @@
-import { isPromiseFailure, isPromiseSuccess, PromiseFailureResult, promiseResult, PromiseSuccessResult } from '../src';
+import {
+   isPromiseFailure,
+   isPromiseSuccess,
+   PromiseFailureResult,
+   promiseResult,
+   promiseResultRejected, promiseResultResolved,
+   PromiseSuccessResult
+} from '../src';
 
 describe('promise-result', () => {
 
@@ -51,4 +58,15 @@ describe('promise-result', () => {
       });
    });
 
+   it('failures have an undefined value', async () => {
+      const failure = await promiseResultRejected(new Error('Foo'));
+      expect('value' in failure).toBe(true);
+      expect(failure).toHaveProperty('value', undefined);
+   });
+
+   it('successes have an null error', async () => {
+      const success = await promiseResultResolved('Foo');
+      expect('error' in success).toBe(true);
+      expect(success).toHaveProperty('error', null);
+   });
 });
